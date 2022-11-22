@@ -24,7 +24,7 @@ const logger = async (req, res, next) => {
           to: req.body.email,
           subject: "Thanks for Enquiring the FOSSCU",
           text: `Yash`,
-          html: `${req.body.name} ${req.body.message}`,
+          html: `${req.body.message}`,
         });
       };
   
