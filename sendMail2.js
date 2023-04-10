@@ -24,7 +24,7 @@ const logger2 = async (req, res, next) => {
       });
       await config.sendMail({
         form: "test@gmail.com",
-        to: "yashvarshney7011@gmail.com",
+        to: "munsocsbsc@gmail.com",
         subject: `Dear ${req.body.name} is enquiring`,
         html: `
         <div>
