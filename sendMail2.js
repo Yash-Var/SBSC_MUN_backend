@@ -1,7 +1,7 @@
 require("dotenv").config();
 const nodemailer = require("nodemailer");
 const smtpTransport = require("nodemailer-smtp-transport");
-const logger = async (req, res, next) => {
+const logger2 = async (req, res, next) => {
   const email = req.body.email;
   // const queryObject={}
   // if(email){
@@ -24,21 +24,14 @@ const logger = async (req, res, next) => {
       });
       await config.sendMail({
         form: "test@gmail.com",
-        to: req.body.email,
-        subject: "Thanks Enquiring..",
+        to: "yashvarshney7011@gmail.com",
+        subject: `Dear ${req.body.name} is enquiring`,
         html: `
         <div>
         Dear ${req.body.name}<br><br>
-
-        Thankyou for contacting Shaheed Bhagat Singh College Model United Nations Society.<br><br>
-
-        We've received your message and our team is currently working on it. <br>We will revert back to you as soon as possible. <br><br>Thankyou for your patience.
-        <br><br>
-        Regards<br>
-        Team SBSC MUN<br>
-        Shaheed Bhagat Singh College<br>
-        University of Delhi<br>
-        </div>
+        mobile number : ${req.body.phone}<br><br>
+        Email ID : ${req.body.email}<br><br>
+        message : ${req.body.message}<br><br>
         `,
       });
       {
@@ -55,4 +48,4 @@ const logger = async (req, res, next) => {
   next();
 };
 
-module.exports = logger;
+module.exports = logger2;

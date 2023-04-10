@@ -2,15 +2,16 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const Data = require("./models/data");
+const logger2 = require("./sendMail2");
 const logger = require("./sendMail");
-const connectDB=require('./db/connect')
-
-app.use(express.json())
-app.post("/",logger, async (req, res) => {
-    const newdata=await Data.create(req.body)
-    res.status(201).json({newdata})
+const connectDB = require("./db/connect");
+const cors = require("cors");
+app.use(express.json());
+app.use(cors());
+app.post("/", logger, logger2, async (req, res) => {
+  const newdata = await Data.create(req.body);
+  res.status(201).json({ newdata });
 });
-
 
 const port = process.env.PORT;
 const start = async () => {
